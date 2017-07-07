@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginForm</title>
+    <script src="~/Scripts/jquery-3.1.1.min.js" ></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm("LoginForm", "Home", FormMethod.Post))
+    {
+        <label>Логин:</label><br /><br />
+        <input name="login" type="text" /><br />
+        <label>Пароль:</label><br /><br />
+        <input type="password" name="password" /><br /><br />
+        <input type="submit" value="Войти" />
+    }
+   <p>@Ajax.ActionLink("Нет еще аккаунта? Зарегистрируйтесь", "RegisterForm", "Home", new AjaxOptions { UpdateTargetId="RegisterYourAccount"})</p>
+       <div id="RegisterYourAccount" >
+
+        </div>
+   
+
+</body>
+</html>

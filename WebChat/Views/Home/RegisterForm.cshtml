@@ -1,0 +1,32 @@
+﻿
+@using (Html.BeginForm("RegisterForm", "Home", FormMethod.Post))
+{
+    <p>
+        <label>Никнейм: </label>
+        <br />
+       <input type="text" name="nickname"/>
+    </p>
+    <p>
+        <label>Email:</label>
+        <br />
+        <input type="text" name="email" />
+    </p>
+    <p>
+        <label>Пароль: </label>
+        <br />
+        <input type="text" name="password" />
+    </p>
+    <br/>
+    <input type="submit" value="Отправить"/>
+}
+
+<script>
+    $(document).ready(function () {
+
+        
+    });
+</script>
+   
+
+
+
