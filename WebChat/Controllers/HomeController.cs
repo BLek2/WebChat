@@ -7,6 +7,8 @@ using WebChat.Models;
 using System.Net;
 using System.Net.Mail;
 
+
+
 namespace WebChat.Controllers
 {
     public class HomeController : Controller
@@ -16,12 +18,29 @@ namespace WebChat.Controllers
         [HttpGet]
         public ActionResult LoginForm()
         {
+
+
             return View();
         }
         [HttpPost]
         public ActionResult LoginForm(string login, string password)
         {
+           
 
+            IEnumerable<User> users = DbUser.Users;
+
+            foreach (var b in users)
+            {
+                if(b.NickName == login && b.Password == password)
+                {
+                    Session["login"] = login;
+                   
+
+                    return RedirectToAction("Room","Chat", new { login });
+                }
+            }
+
+            
             return View();
         }
         [HttpGet]

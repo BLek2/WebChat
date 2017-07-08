@@ -11,12 +11,14 @@ namespace WebChat.Controllers
     {
         // GET: Room
         [HttpGet]
-        public ActionResult Room()
+        public ActionResult Room(string login)
         {
+            var OurName = (string)Session["login"];
+            ViewBag.OurName = OurName;
             return View();
         }
         [HttpPost]
-        public ActionResult Room(string val)
+        public ActionResult Room(string val,int a)
         {
             return View();
         }

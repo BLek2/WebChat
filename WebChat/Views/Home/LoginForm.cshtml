@@ -16,9 +16,9 @@
     @using (Html.BeginForm("LoginForm", "Home", FormMethod.Post))
     {
         <label>Логин:</label><br /><br />
-        <input name="login" type="text" /><br />
+        <input name="login" type="text" required/><br />
         <label>Пароль:</label><br /><br />
-        <input type="password" name="password" /><br /><br />
+        <input type="password" name="password" required/><br /><br />
         <input type="submit" value="Войти" />
     }
    <p>@Ajax.ActionLink("Нет еще аккаунта? Зарегистрируйтесь", "RegisterForm", "Home", new AjaxOptions { UpdateTargetId="RegisterYourAccount"})</p>
