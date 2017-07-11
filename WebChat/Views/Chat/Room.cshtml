@@ -1,4 +1,4 @@
-﻿@model WebChat.Models.User
+﻿
 @{
     Layout = null;
 }
@@ -18,12 +18,15 @@
     <div> 
         <div id="ChatRoom">
             <div id="ChatBlock">
-
+                @foreach(var b in ViewBag.lines)
+                {
+                    <p>@b</p>
+                }
             </div>
             
         </div>
         <br />
-        @using (Ajax.BeginForm("Room","Chat", new AjaxOptions { OnSuccess = "OnSuccess" }))
+        @using (Ajax.BeginForm("Room","Chat", new AjaxOptions {  OnSuccess = "OnSuccess"}))
         {
 
             <textarea id="message" type="text" name="message" required></textarea>
@@ -31,7 +34,12 @@
         }
         
        <p>Сейчас в онлайне: </p>
-   
+       @{ 
+           HttpCookie cookieNickName = Request.Cookies["NickName"];
+           var UserOnline = cookieNickName.Value;
+
+       }
+        <p>@UserOnline</p>
 
 
     </div>

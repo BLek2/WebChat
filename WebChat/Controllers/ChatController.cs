@@ -15,21 +15,26 @@ namespace WebChat.Controllers
         [HttpGet]
         public ActionResult Room()
         {
-           
+            var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/Messages/Messages.txt"));
+            ViewBag.lines = lines;
+
             return View();
         }
         [HttpPost]
-        public ActionResult Room(string message)
+        public JsonResult Room(string message)
         {
             FileStream file1 = new FileStream(Server.MapPath("~/Content/Messages/Messages.txt"),FileMode.Append);
             StreamWriter writer = new StreamWriter(file1);
 
             HttpCookie cookieNickName = Request.Cookies["NickName"];
 
-            writer.Write(cookieNickName.Value+":"+message + "\r\n");
+            writer.Write(cookieNickName.Value+":"+message + "\r");
             writer.Close();
 
-            return View();
+            var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/Messages/Messages.txt"));
+            ViewBag.lines = lines;
+
+            return Json(lines,JsonRequestBehavior.AllowGet);
         }
     }
 }
