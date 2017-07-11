@@ -25,7 +25,6 @@ namespace WebChat.Controllers
         [HttpPost]
         public ActionResult LoginForm(string login, string password)
         {
-           
 
             IEnumerable<User> users = DbUser.Users;
 
@@ -33,10 +32,15 @@ namespace WebChat.Controllers
             {
                 if(b.NickName == login && b.Password == password)
                 {
-                    Session["login"] = login;
-                   
+                    HttpCookie cookie = new HttpCookie("NickName");
+                    cookie.Value = login;
+                    cookie.Expires = DateTime.Now.AddHours(1);
+                    Response.Cookies.Add(cookie);
 
-                    return RedirectToAction("Room","Chat", new { login });
+
+
+
+                    return RedirectToAction("Room","Chat");
                 }
             }
 
@@ -51,8 +55,28 @@ namespace WebChat.Controllers
         [HttpPost]
         public ActionResult RegisterForm(string nickname, string email, string password)
         {
-            
-            
+            IQueryable<User> NickNames = DbUser.Users;
+             foreach(var b in NickNames)
+            {
+                   if(b.NickName == nickname)
+                {
+                    return View();
+                }
+                   if(b.Email == email)
+                {
+                    return View();
+                }
+                
+            }
+            User user = new User
+            {
+                NickName = nickname,
+                Email = email,
+                Password = password
+            };
+            DbUser.Users.Add(user);
+            DbUser.SaveChanges();
+
             return View();
         }
         

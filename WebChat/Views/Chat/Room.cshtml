@@ -1,4 +1,4 @@
-﻿
+﻿@model WebChat.Models.User
 @{
     Layout = null;
 }
@@ -9,10 +9,32 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Room</title>
+    <link href="~/Content/css/ChatRoom.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/ChatRoomScript.js"></script>
 </head>
 <body>
     <div> 
-        @ViewBag.OurName
+        <div id="ChatRoom">
+            <div id="ChatBlock">
+
+            </div>
+            
+        </div>
+        <br />
+        @using (Ajax.BeginForm("Room","Chat", new AjaxOptions { OnSuccess = "OnSuccess" }))
+        {
+
+            <textarea id="message" type="text" name="message" required></textarea>
+            <input id="send" type="submit" value="Отправить" name="send" />
+        }
+        
+       <p>Сейчас в онлайне: </p>
+   
+
+
     </div>
+    
 </body>
 </html>

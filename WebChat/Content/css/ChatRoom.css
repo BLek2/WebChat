@@ -1,0 +1,14 @@
+﻿
+#ChatBlock {
+    overflow: scroll;
+    width: 75%;
+    height: 500px;
+    border: 1px solid black;
+}
+
+#message {
+    width: 50%;
+    height: 100px;
+}
+
+
