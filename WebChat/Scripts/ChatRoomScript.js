@@ -1,5 +1,5 @@
-﻿function OnSuccess(data)
-{
+﻿function OnSuccess(data) {
+
     $("#message").val("");
     var resultDate = $("#ChatBlock");
     resultDate.empty();
@@ -7,5 +7,7 @@
     {
         resultDate.append('<p>' + data[i] + '</p>');
     }
+
+    setInterval(function () { document.getElementById('ChatBlock').scrollTop = 9999; }, 100);
 }
     

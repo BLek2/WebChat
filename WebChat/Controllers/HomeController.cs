@@ -32,14 +32,7 @@ namespace WebChat.Controllers
             {
                 if(b.NickName == login && b.Password == password)
                 {
-                    HttpCookie cookie = new HttpCookie("NickName");
-                    cookie.Value = login;
-                    cookie.Expires = DateTime.Now.AddHours(1);
-                    Response.Cookies.Add(cookie);
-
-
-
-
+                    ToSetCookie(login);
                     return RedirectToAction("Room","Chat");
                 }
             }
@@ -53,18 +46,18 @@ namespace WebChat.Controllers
             return View(DbUser.Users);
         }
         [HttpPost]
-        public ActionResult RegisterForm(string nickname, string email, string password)
+        public JsonResult RegisterForm(string nickname, string email, string password)
         {
             IQueryable<User> NickNames = DbUser.Users;
              foreach(var b in NickNames)
             {
                    if(b.NickName == nickname)
                 {
-                    return View();
+                    return Json("Такой никнейм уже существует",JsonRequestBehavior.AllowGet);
                 }
                    if(b.Email == email)
                 {
-                    return View();
+                    return Json("Такой электронный адрес уже зарегистрированный!",JsonRequestBehavior.AllowGet);
                 }
                 
             }
@@ -77,9 +70,20 @@ namespace WebChat.Controllers
             DbUser.Users.Add(user);
             DbUser.SaveChanges();
 
-            return View();
+            ToSetCookie(nickname);
+
+            return Json("Вы успешно зарегистрированы. Можете войти в чат!", JsonRequestBehavior.AllowGet);
         }
-        
+
+
+
+        private void ToSetCookie(string value)
+        {
+            HttpCookie cookie = new HttpCookie("NickName");
+            cookie.Value = value;
+            cookie.Expires = DateTime.Now.AddHours(24);
+            Response.Cookies.Add(cookie);
+        }
 
     }
 }

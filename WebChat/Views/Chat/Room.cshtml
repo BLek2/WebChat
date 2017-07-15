@@ -9,10 +9,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Room</title>
-    <link href="~/Content/css/ChatRoom.css" rel="stylesheet">
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <link href="~/Content/css/ChatRoom.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="~/Content/css/sweetalert.css" />
+
+    <script src="~/Scripts/Others/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/Others/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/Others/sweetalert.min.js"></script>
+    <script src="~/Scripts/Others/sweetalert-dev.js"></script>
     <script src="~/Scripts/ChatRoomScript.js"></script>
+
 </head>
 <body>
     <div> 
@@ -33,16 +39,9 @@
             <input id="send" type="submit" value="Отправить" name="send" />
         }
         
-       <p>Сейчас в онлайне: </p>
-       @{ 
-           HttpCookie cookieNickName = Request.Cookies["NickName"];
-           var UserOnline = cookieNickName.Value;
-
-       }
-        <p>@UserOnline</p>
-
-
     </div>
+    <p>Сейчас в онлайне:</p>
+     <p>@ViewBag.cookie</p>
     
 </body>
 </html>

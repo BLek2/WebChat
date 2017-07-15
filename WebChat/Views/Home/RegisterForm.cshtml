@@ -1,27 +1,46 @@
 ﻿
-@using (Html.BeginForm("RegisterForm", "Home", FormMethod.Post))
-{
-    <p>
-        <label>Никнейм: </label>
-        <br />
-       <input type="text" name="nickname" required/>
-    </p>
-    <p>
-        <label>Email:</label>
-        <br />
-        <input type="text" name="email" required/>
-    </p>
-    <p>
-        <label>Пароль: </label>
-        <br />
-        <input type="text" name="password" required/>
-    </p>
-    <br/>
-    <input type="submit" value="Отправить" required/>
+@{
+    Layout = null;
 }
 
+<!DOCTYPE html>
 
-   
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterForm</title>
+    <script src="~/Scripts/RegisterForm.js"></script>
 
+</head>
+<body>
+    <div> 
 
+        @using (Html.BeginForm("RegisterForm", "Home", FormMethod.Post, new { onsubmit = "return ValidateForm();" }))
+        {
+            <p>
+                <label>Никнейм: </label>
+                <br />
+                <input id="nickname" type="text" name="nickname" placeholder="Придумайте никнейм" />
+            </p>
+            <p>
+                <label>Email:</label>
+                <br />
+                <input id="email" type="text" name="email" placeholder="Введите ваш email" />
+            </p>
+            <p>
+                <label>Пароль: </label>
+                <br />
+                <input id="password" type="text" name="password" placeholder="Придумайте пароль" />
+            </p>
+            <p>
+                <label>Подтвердите пароль: </label>
+                <br />
+                <input id="ConfirmPassword" type="text" name="ConfirmPassword" placeholder="Повторите пароль" />
+            </p>
+            <br />
+            <input type="submit" value="Отправить" />
+        }
 
+    </div>
+</body>
+</html>
