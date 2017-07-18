@@ -10,4 +10,14 @@
 
     setInterval(function () { document.getElementById('ChatBlock').scrollTop = 9999; }, 100);
 }
+function ValidMessage()
+{
+    var message = $("#message").val();
+
+    if (message.length > 86) {
+        swal("Ошибка", "Максимально количество символов 86","error");
+        return false;
+    }
+}
+
     

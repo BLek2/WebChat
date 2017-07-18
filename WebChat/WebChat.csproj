@@ -94,7 +94,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\ChatRoom\CookieList.txt" />
     <Content Include="Content\css\ChatRoom.css" />
     <Content Include="Content\ChatRoom\Messages.txt" />
     <Content Include="Content\css\login.css" />
@@ -138,6 +137,7 @@
     <Content Include="Views\Chat\Room.cshtml" />
     <Content Include="Views\Home\LoginForm.cshtml" />
     <Content Include="Views\Home\RegisterForm.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

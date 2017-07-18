@@ -74,7 +74,17 @@ namespace WebChat.Controllers
 
             return Json("Вы успешно зарегистрированы. Можете войти в чат!", JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ForgotPassword(string email)
+        {
 
+            return View();
+        }
 
 
         private void ToSetCookie(string value)

@@ -26,12 +26,12 @@
     @using (Html.BeginForm("LoginForm", "Home", FormMethod.Post, new { onsubmit = "return ValidateForm();" }))
     {
         <label>Логин:</label><br /><br />
-        <input  class="Enterence"  id="login"  name="login" type="text"  /><br /><br />
+        <input  class="Enterence"  id="login"   maxlength="16"  name="login" type="text"  /><br /><br />
         <label>Пароль:</label><br /><br />
-        <input class="Enterence"   id="password"  type="password" name="password" /><br /><br />
-        <input id="submit"  type="submit" value="Войти" />
+        <input class="Enterence"   id="password" maxlength="32"    type="password" name="password" /><br /><br />
+        <input  class="submit" type="submit" value="Войти" />
     }
-    <p>Забыли пароль?</p>
+    <p>@Html.ActionLink("Забыли пароль?", "ForgotPassword", "Home")</p>
    <p>@Ajax.ActionLink("Нет еще аккаунта? Зарегистрируйтесь", "RegisterForm", "Home", new AjaxOptions { UpdateTargetId = "RegisterYourAccount" }, new { onsubmit = "return ValidateForm();" } )</p>
        <div id="RegisterYourAccount" >
 

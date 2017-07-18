@@ -18,19 +18,6 @@ namespace WebChat.Controllers
             var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/ChatRoom/Messages.txt"));
             ViewBag.lines = lines;
 
-          
-            FileStream file1 = new FileStream(Server.MapPath("~/Content/ChatRoom/CookieList.txt"), FileMode.Create);
-            StreamWriter writer = new StreamWriter(file1);
-
-            HttpCookie cookieNickName = Request.Cookies["NickName"];
-
-            writer.Write(cookieNickName.Value + "\r");
-            writer.Close();
-
-            var cookie = System.IO.File.ReadAllLines(Server.MapPath("~/Content/ChatRoom/CookieList.txt"));
-            ViewBag.cookie = cookie;
-
-
             return View();
         }
         [HttpPost]
