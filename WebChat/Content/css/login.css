@@ -1,0 +1,41 @@
+﻿body {
+    background-color: #ebeef4;
+}
+
+label {
+    font-family: sans-serif;
+    font-size: 25px;
+    color: #a9acad;
+}
+
+.Enterence {
+    border: 0px;
+    width: 250px;
+    height: 30px;
+    background-color: #ffffff;
+    font-size: 20px;
+   
+}
+
+.submit {
+    background-color: #c4ebff;
+    border: 0px;
+    font-size: 20px;
+    height: 30px;
+    width: 150px;
+}
+
+    .submit:hover {
+        background-color: #b7e6ff;
+        cursor: pointer;
+        color: #4800ff;
+    }
+a {
+    font-size: 20px;
+    text-decoration: none;
+    color:#000000;
+}
+a:hover
+{
+    color:#4800ff;
+}

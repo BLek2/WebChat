@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginForm</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/css/sweetalert.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/login.css" />
+    <script src="~/Scripts/Others/jquery-3.1.1.min.js" ></script>
+    <script src="~/Scripts/Others/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/Others/sweetalert.min.js"></script>
+    <script src="~/Scripts/Others/sweetalert-dev.js"></script>
+    <script src="~/Scripts/LoginForm.js"></script>
+
+
+
+
+</head>
+<body>
+    @using (Html.BeginForm("LoginForm", "Home", FormMethod.Post, new { onsubmit = "return ValidateForm();" }))
+    {
+        <label>Логин:</label><br /><br />
+        <input  class="Enterence"  id="login"   maxlength="16"  name="login" type="text"  /><br /><br />
+        <label>Пароль:</label><br /><br />
+        <input class="Enterence"   id="password" maxlength="32"    type="password" name="password" /><br /><br />
+        <input  class="submit" type="submit" value="Войти" />
+    }
+    <p>@Html.ActionLink("Забыли пароль?", "ForgotPassword", "Home")</p>
+   <p>@Ajax.ActionLink("Нет еще аккаунта? Зарегистрируйтесь", "RegisterForm", "Home", new AjaxOptions { UpdateTargetId = "RegisterYourAccount" }, new { onsubmit = "return ValidateForm();" } )</p>
+       <div id="RegisterYourAccount" >
+
+        </div>
+   
+
+</body>
+</html>

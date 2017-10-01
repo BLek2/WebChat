@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterForm</title>
+    <script src="~/Scripts/RegisterForm.js"></script>
+
+</head>
+<body>
+    <div> 
+
+        @using (Html.BeginForm("RegisterForm", "Home", FormMethod.Post, new { onsubmit = "return ValidateForm();" }))
+        {
+            <p>
+                <label>Никнейм: </label>
+                <br />
+                <input   maxlength="16"   class="Enterence" id="nickname" type="text" name="nickname" placeholder="Придумайте никнейм" />
+            </p>
+            <p>
+                <label>Email:</label>
+                <br />
+                <input  class="Enterence" id="email" type="text" name="email" placeholder="Введите ваш email" />
+            </p>
+            <p>
+                <label>Пароль: </label>
+                <br />
+                <input  maxlength="32"  class="Enterence"  id="password2" type="text" name="password" placeholder="Придумайте пароль" />
+            </p>
+            <p>
+                <label>Подтвердите пароль: </label>
+                <br />
+                <input   maxlength="32"  class="Enterence" id="ConfirmPassword2" type="text" name="ConfirmPassword" placeholder="Подтвердите пароль" />
+            </p>
+            <br />
+            <input  class="submit" type="submit" value="Отправить" />
+        }
+
+    </div>
+</body>
+</html>
