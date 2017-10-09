@@ -89,9 +89,11 @@ namespace WebChat.Controllers
 
         private void ToSetCookie(string value)
         {
-            HttpCookie cookie = new HttpCookie("NickName");
-            cookie.Value = value;
-            cookie.Expires = DateTime.Now.AddHours(24);
+            HttpCookie cookie = new HttpCookie("NickName")
+            {
+                Value = value,
+                Expires = DateTime.Now.AddHours(24)
+            };
             Response.Cookies.Add(cookie);
         }
 
