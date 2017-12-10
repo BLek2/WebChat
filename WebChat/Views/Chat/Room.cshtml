@@ -22,7 +22,6 @@
 </head>
 <body>
     <script type="text/javascript" >
-
         $(document).ready(function(){
             ShowText();
             setInterval('ShowText()', 10);
@@ -36,8 +35,18 @@
                 url: '@Url.Action("ResultOfText", "Chat")',
                 success: function (data)
                 {
-                
-                    $("#ChatBlock").html(data);
+                    var JsonText = $.parseJSON(data);
+                    var TextStr = "";
+                    for (var b in JsonText) {
+
+                        TextStr += b;
+                        if (b == "\r") {
+                            $("#ChatBlock").html(TextStr);
+                            TextStr = "";
+                        }
+                       
+                    }
+                    
 
                 }
 
@@ -45,12 +54,13 @@
             });
         }
     </script>
+
     <div> 
         <div id="ChatRoom">
             <div id="ChatBlock">
 
-              
-              
+
+
             </div>
             
         </div>
@@ -65,6 +75,8 @@
     </div>
     
     
-    
+    <script type="text/javascript">
+        alert("Введите сообщение");
+    </script>
 </body>
 </html>

@@ -21,11 +21,11 @@ namespace WebChat.Controllers
             {
                 var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/ChatRoom/Messages.txt"));
                 ViewBag.lines = lines;
+
             }
                 
            
           
-
             return View();
         }
         [HttpPost]
