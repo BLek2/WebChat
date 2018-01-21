@@ -17,23 +17,27 @@ namespace WebChat.Controllers
         [HttpGet]
         public ActionResult Room()
         {
-            lock (locker)
-            {
-                var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/ChatRoom/Messages.txt"));
-                ViewBag.lines = lines;
 
+            if(Request.Cookies["NickName"] != null)
+            {
+                lock (locker)
+                {
+                    var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/ChatRoom/Messages.txt"));
+                    ViewBag.lines = lines;
+
+                }
             }
-                
-           
-          
+            else
+            {
+                return RedirectToAction("LoginForm", "Home");
+            }
+         
+                       
             return View();
         }
         [HttpPost]
         public JsonResult Room(string message)
         {
-
-
-
 
             lock(locker)
             {
@@ -41,12 +45,10 @@ namespace WebChat.Controllers
                 StreamWriter writer = new StreamWriter(file1);
 
                 HttpCookie cookieNickName = Request.Cookies["NickName"];
-
+             
                 writer.Write(cookieNickName.Value + ":" + message + "\r");
                 writer.Close();
             }
-
-
 
 
             lock (locker)
@@ -57,10 +59,17 @@ namespace WebChat.Controllers
                 return Json(lines, JsonRequestBehavior.AllowGet);
 
             }
-              
-            
-          
+                                  
         }
+
+        [HttpPost]
+        public ActionResult SignOff()
+        {
+            Response.Cookies["NickName"].Expires = System.DateTime.Now.AddYears(-50);
+
+            return RedirectToAction("LoginForm", "Home");
+        }
+
         [HttpGet]
         public JsonResult ResultOfText()
         {
@@ -72,12 +81,7 @@ namespace WebChat.Controllers
 
                 return Json(resultOfThis, JsonRequestBehavior.AllowGet);
             }
-            
-
-
-
-
-           
+                     
         }
     }
 }

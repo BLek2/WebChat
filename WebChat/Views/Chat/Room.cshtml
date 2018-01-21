@@ -44,22 +44,22 @@
                             $("#ChatBlock").html(TextStr);
                             TextStr = "";
                         }
-                       
                     }
-                    
-
                 }
-
-
             });
         }
     </script>
 
     <div> 
+
         <div id="ChatRoom">
+   
             <div id="ChatBlock">
 
-
+             @foreach(var b in ViewBag.lines)
+             {
+                 <p>@b</p>
+             }
 
             </div>
             
@@ -73,10 +73,21 @@
         }
         
     </div>
-    
-    
-    <script type="text/javascript">
-        alert("Введите сообщение");
-    </script>
+    <br/>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div >
+        @using (Html.BeginForm("SignOff", "Chat", FormMethod.Post))
+            {
+            <input type="submit" value="SignOff" />
+        }
+    </div>
+
+
+
+
+
 </body>
 </html>

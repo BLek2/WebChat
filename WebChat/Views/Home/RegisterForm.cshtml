@@ -9,7 +9,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>RegisterForm</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/css/sweetalert.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/login.css" />
+
+    <script src="~/Scripts/Others/sweetalert.min.js"></script>
+    <script src="~/Scripts/Others/sweetalert-dev.js"></script>
+   
     <script src="~/Scripts/RegisterForm.js"></script>
+
 
 </head>
 <body>
@@ -20,27 +27,36 @@
             <p>
                 <label>Никнейм: </label>
                 <br />
-                <input   maxlength="16"   class="Enterence" id="nickname" type="text" name="nickname" placeholder="Придумайте никнейм" />
+                <input maxlength="16" class="Enterence" id="nickname" type="text" name="nickname" placeholder="Придумайте никнейм" />
             </p>
             <p>
                 <label>Email:</label>
                 <br />
-                <input  class="Enterence" id="email" type="text" name="email" placeholder="Введите ваш email" />
+                <input class="Enterence" id="email" type="text" name="email" placeholder="Введите ваш email" />
             </p>
             <p>
                 <label>Пароль: </label>
                 <br />
-                <input  maxlength="32"  class="Enterence"  id="password2" type="text" name="password" placeholder="Придумайте пароль" />
+                <input maxlength="32" class="Enterence" id="password2" type="password" name="password" placeholder="Придумайте пароль" />
             </p>
             <p>
                 <label>Подтвердите пароль: </label>
                 <br />
-                <input   maxlength="32"  class="Enterence" id="ConfirmPassword2" type="text" name="ConfirmPassword" placeholder="Подтвердите пароль" />
+                <input maxlength="32" class="Enterence" id="ConfirmPassword2" type="password" name="ConfirmPassword" placeholder="Подтвердите пароль" />
             </p>
             <br />
-            <input  class="submit" type="submit" value="Отправить" />
+            <input class="submit" type="submit" value="Отправить" />
         }
-
     </div>
+    <br/>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+   <div>@Html.ActionLink("Back to Login","LoginForm","Home")</div>
+
 </body>
 </html>

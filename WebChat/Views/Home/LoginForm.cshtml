@@ -18,12 +18,8 @@
     <script src="~/Scripts/Others/sweetalert-dev.js"></script>
     <script src="~/Scripts/LoginForm.js"></script>
 
-
-
-
 </head>
 <body>
-
 
     @using (Html.BeginForm("LoginForm", "Home", FormMethod.Post, new { onsubmit = "return ValidateForm();" }))
     {
@@ -33,12 +29,7 @@
         <input class="Enterence"   id="password" maxlength="32"    type="password" name="password" /><br /><br />
         <input  class="submit" type="submit" value="Войти" />
     }
-    <p>@Html.ActionLink("Забыли пароль?", "ForgotPassword", "Home")</p>
-   <p>@Ajax.ActionLink("Нет еще аккаунта? Зарегистрируйтесь", "RegisterForm", "Home", new AjaxOptions { UpdateTargetId = "RegisterYourAccount" }, new { onsubmit = "return ValidateForm();" } )</p>
-       <div id="RegisterYourAccount" >
-
-        </div>
-   
+   <p>@Html.ActionLink("Нет еще аккаунта? Зарегистрируйтесь", "RegisterForm", "Home" )</p>
 
 </body>
 </html>

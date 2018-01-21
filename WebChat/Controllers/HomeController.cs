@@ -19,13 +19,11 @@ namespace WebChat.Controllers
         public ActionResult LoginForm()
         {
 
-
             return View();
         }
         [HttpPost]
         public ActionResult LoginForm(string login, string password)
-        {
-
+        {     
             IEnumerable<User> users = DbUser.Users;
 
             foreach (var b in users)
@@ -36,7 +34,6 @@ namespace WebChat.Controllers
                     return RedirectToAction("Room","Chat");
                 }
             }
-
             
             return View();
         }
@@ -74,17 +71,6 @@ namespace WebChat.Controllers
 
             return Json("Вы успешно зарегистрированы. Можете войти в чат!", JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
-        public ActionResult ForgotPassword()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ForgotPassword(string email)
-        {
-
-            return View();
-        }
 
 
         private void ToSetCookie(string value)
@@ -92,7 +78,7 @@ namespace WebChat.Controllers
             HttpCookie cookie = new HttpCookie("NickName")
             {
                 Value = value,
-                Expires = DateTime.Now.AddHours(24)
+                Expires = DateTime.Now.AddYears(50)
             };
             Response.Cookies.Add(cookie);
         }

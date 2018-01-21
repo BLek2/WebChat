@@ -16,7 +16,7 @@
     <AssemblyName>WebChat</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44305</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -144,12 +144,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\ChatRoom.css" />
     <Content Include="Content\ChatRoom\Messages.txt" />
     <Content Include="Content\css\login.css" />
     <Content Include="Content\css\sweetalert.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-3.2.1-vsdoc.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -161,6 +170,7 @@
     <Content Include="Scripts\json-serialize.js" />
     <Content Include="Scripts\json-serialize.min.js" />
     <Content Include="Scripts\LoginForm.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Others\jquery-3.1.1.js" />
     <Content Include="Scripts\Others\jquery-3.1.1.min.js" />
     <Content Include="Scripts\Others\jquery-3.1.1.slim.js" />
@@ -196,7 +206,6 @@
     <Content Include="Views\Chat\Room.cshtml" />
     <Content Include="Views\Home\LoginForm.cshtml" />
     <Content Include="Views\Home\RegisterForm.cshtml" />
-    <Content Include="Views\Home\ForgotPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -207,7 +216,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\image\" />
-    <Folder Include="Views\Room\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707071825075_UserMigration.resx">
