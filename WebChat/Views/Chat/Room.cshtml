@@ -21,37 +21,38 @@
 
 </head>
 <body>
-    <script type="text/javascript" >
-        $(document).ready(function(){
-            ShowText();
-            setInterval('ShowText()', 10);
-        });
-        function ShowText()
-        {
-             $.ajax({
-                type: 'GET',
-                dataType: 'JSON',
-                contentType: 'application/JSON',
-                url: '@Url.Action("ResultOfText", "Chat")',
-                success: function (data)
-                {
-                    var JsonText = $.parseJSON(data);
-                    var TextStr = "";
-                    for (var b in JsonText) {
+<script type="text/javascript" >
+    $(document).ready(function(){
+        ShowText();
 
-                        TextStr += b;
-                        if (b == "\r") {
-                            $("#ChatBlock").html(TextStr);
-                            TextStr = "";
-                        }
+        setInterval('ShowText()', 10);
+    });
+
+    function ShowText()
+    {
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            contentType: 'application/JSON',
+            url: '@Url.Action("ResultOfText", "Chat")',
+            success: function (data){
+                var JsonText = $.parseJSON(data);
+                var TextStr = "";
+
+                for (var b in JsonText) {
+                    TextStr += b;
+            
+                    if (b == "\r") {
+                        $("#ChatBlock").html(TextStr);
+                        TextStr = "";
                     }
                 }
-            });
-        }
-    </script>
+            }
+        });
+    }
+</script>
 
-    <div> 
-
+    <div>
         <div id="ChatRoom">
    
             <div id="ChatBlock">
@@ -61,29 +62,30 @@
                  <p>@b</p>
              }
 
-            </div>
-            
+            </div>   
         </div>
         <br />
+
         @using (Ajax.BeginForm("Room","Chat", FormMethod.Post,new AjaxOptions {  OnSuccess = "OnSuccess"}, new { id="MessageForm", onsubmit= "return ValidMessage()" } ))
         {
-
             <textarea id="message" maxlength="86" type="text" name="message" required></textarea><br/>
             <input id="send" type="submit" value="Отправить" name="send" onsubmit="" />
         }
         
     </div>
-    <br/>
-    <br />
-    <br />
-    <br />
-    <br />
-    <div >
-        @using (Html.BeginForm("SignOff", "Chat", FormMethod.Post))
-            {
-            <input type="submit" value="SignOff" />
-        }
-    </div>
+       <br/>
+       <br />
+       <br />
+       <br />
+       <br /> 
+    <div>
+
+    @using (Html.BeginForm("SignOff", "Chat", FormMethod.Post))
+    {
+        <input type="submit" value="SignOff"/>
+    }
+
+   </div>
 
 
 

@@ -25,17 +25,16 @@ label {
     width: 150px;
 }
 
-    .submit:hover {
+.submit:hover {
         background-color: #b7e6ff;
         cursor: pointer;
         color: #4800ff;
-    }
+}
 a {
     font-size: 20px;
     text-decoration: none;
     color:#000000;
 }
-a:hover
-{
+a:hover{
     color:#4800ff;
 }

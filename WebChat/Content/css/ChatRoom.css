@@ -1,6 +1,7 @@
 ﻿body {
     background-color: #eaecef;
 }
+
 #ChatBlock {
     overflow: hidden;
     width: 75%;
@@ -22,6 +23,7 @@
     font-size:20px;
 
 }
+
 #send {
     background-color: #c4ebff;
     border: 0px;

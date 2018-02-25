@@ -14,56 +14,59 @@ namespace WebChat.Controllers
     public class HomeController : Controller
     {
         UserContext DbUser = new UserContext();
-        // GET: Home
+       
         [HttpGet]
         public ActionResult LoginForm()
         {
-
             return View();
         }
+
         [HttpPost]
         public ActionResult LoginForm(string login, string password)
         {     
             IEnumerable<User> users = DbUser.Users;
 
-            foreach (var b in users)
-            {
-                if(b.NickName == login && b.Password == password)
-                {
+             foreach (var b in users)
+             {
+                if(b.NickName == login && b.Password == password){
+
                     ToSetCookie(login);
+
                     return RedirectToAction("Room","Chat");
                 }
-            }
+             }
             
             return View();
         }
+
         [HttpGet]
         public ActionResult RegisterForm()
         {
             return View(DbUser.Users);
         }
+
         [HttpPost]
         public JsonResult RegisterForm(string nickname, string email, string password)
         {
             IQueryable<User> NickNames = DbUser.Users;
              foreach(var b in NickNames)
-            {
-                   if(b.NickName == nickname)
-                {
+              {
+                   if(b.NickName == nickname){
                     return Json("Такой никнейм уже существует",JsonRequestBehavior.AllowGet);
-                }
-                   if(b.Email == email)
-                {
+                   }
+                   if(b.Email == email){
                     return Json("Такой электронный адрес уже зарегистрированный!",JsonRequestBehavior.AllowGet);
-                }
+                   }
                 
-            }
+              }
+
             User user = new User
             {
                 NickName = nickname,
                 Email = email,
                 Password = password
             };
+
             DbUser.Users.Add(user);
             DbUser.SaveChanges();
 
@@ -72,7 +75,6 @@ namespace WebChat.Controllers
             return Json("Вы успешно зарегистрированы. Можете войти в чат!", JsonRequestBehavior.AllowGet);
         }
 
-
         private void ToSetCookie(string value)
         {
             HttpCookie cookie = new HttpCookie("NickName")
@@ -80,6 +82,7 @@ namespace WebChat.Controllers
                 Value = value,
                 Expires = DateTime.Now.AddYears(50)
             };
+
             Response.Cookies.Add(cookie);
         }
 

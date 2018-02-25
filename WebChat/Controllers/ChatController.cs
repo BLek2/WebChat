@@ -13,32 +13,27 @@ namespace WebChat.Controllers
     {
         UserContext DbUser = new UserContext();
         static object locker = new object();
-        // GET: Room
+        
         [HttpGet]
         public ActionResult Room()
         {
-
-            if(Request.Cookies["NickName"] != null)
-            {
+            if(Request.Cookies["NickName"] != null){
                 lock (locker)
                 {
                     var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/ChatRoom/Messages.txt"));
                     ViewBag.lines = lines;
-
                 }
             }
-            else
-            {
+            else {
                 return RedirectToAction("LoginForm", "Home");
             }
-         
-                       
+                          
             return View();
         }
+
         [HttpPost]
         public JsonResult Room(string message)
         {
-
             lock(locker)
             {
                 FileStream file1 = new FileStream(Server.MapPath("~/Content/ChatRoom/Messages.txt"), FileMode.Append);
@@ -50,7 +45,6 @@ namespace WebChat.Controllers
                 writer.Close();
             }
 
-
             lock (locker)
             {
                 var lines = System.IO.File.ReadAllLines(Server.MapPath("~/Content/ChatRoom/Messages.txt"));
@@ -58,8 +52,7 @@ namespace WebChat.Controllers
 
                 return Json(lines, JsonRequestBehavior.AllowGet);
 
-            }
-                                  
+            }                   
         }
 
         [HttpPost]
@@ -80,8 +73,7 @@ namespace WebChat.Controllers
                 var resultOfThis = JsonConvert.SerializeObject(lines);
 
                 return Json(resultOfThis, JsonRequestBehavior.AllowGet);
-            }
-                     
+            }       
         }
     }
 }
